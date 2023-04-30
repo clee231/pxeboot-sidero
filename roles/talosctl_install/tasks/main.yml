@@ -1,12 +1,7 @@
 ---
-- name: Gather uname data
-  ansible.builtin.command:
-    cmd: 'uname -s | tr "[:upper:]" "[:lower:]"'
-  register: uname_info
 - name: Download & install talosctl
   ansible.builtin.get_url:
-    url: "https://github.com/talos-systems/talos/releases/latest/download/talosctl-{{uname_info.stdout}}-{{architecture}}"
+    url: "https://github.com/talos-systems/talos/releases/latest/download/talosctl-{{ ansible_facts['ansible_system'] | lower }}-{{ architecture | lower }}"
     dest: /usr/local/bin/talosctl
     mode: '0755'
   become: true
-
