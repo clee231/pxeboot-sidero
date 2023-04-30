@@ -1,0 +1,5 @@
+---
+- name: Local Provisioning of Sidero
+  hosts: localhost
+  roles:
+    - talosctl_install
