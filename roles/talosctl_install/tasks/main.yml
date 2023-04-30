@@ -1,4 +1,4 @@
----services:
+---
 - name: Gather uname data
   ansible.builtin.command:
     cmd: uname -s | tr "[:upper:]" "[:lower:]"
