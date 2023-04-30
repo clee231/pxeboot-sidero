@@ -1,7 +1,7 @@
 ---
 - name: Gather uname data
   ansible.builtin.command:
-    cmd: uname -s | tr "[:upper:]" "[:lower:]"
+    cmd: 'uname -s | tr "[:upper:]" "[:lower:]"'
   register: uname_info
 - name: Download & install talosctl
   ansible.builtin.get_url:
