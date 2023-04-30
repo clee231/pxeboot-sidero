@@ -1,4 +1,7 @@
 ---
+- name: Print all available facts
+  ansible.builtin.debug:
+    var: ansible_facts
 - name: Download & install talosctl
   ansible.builtin.get_url:
     url: "https://github.com/talos-systems/talos/releases/latest/download/talosctl-{{ ansible_facts['ansible_system'] | lower }}-{{ architecture | lower }}"
