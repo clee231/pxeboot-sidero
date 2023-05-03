@@ -9,6 +9,7 @@
     user: "{{ ansible_facts['user_id'] }}"
     groups: docker
     append: true
+  become: true
 
 - name: Debug
   ansible.builtin.debug:
