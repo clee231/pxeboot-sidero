@@ -1,0 +1,10 @@
+---
+# Tasks file for talosctl_create_cluster
+- name: Ensure Docker is available
+  ansible.builtin.command: docker --version
+  register: docker_check
+
+- name: Create control cluster
+  ansible.builtin.command:
+    cmd: "talosctl cluster create --kubernetes-version {{ kubernetes_version }} -p 69:69/udp,8081:8081/tcp,51821:51821/udp --workers 0 --endpoint {{ ansible_facts['ansible_default_ipv4']['address']}}"
+
