@@ -3,3 +3,4 @@
   hosts: localhost
   roles:
     - talosctl_install
+    - talosctl_create_cluster
