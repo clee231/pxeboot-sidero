@@ -1,8 +1,14 @@
 ---
-# Tasks file for talosctl_create_cluster
+# Tasks file for talosctl_create_management_bootstrap_cluster
 - name: Ensure Docker is available
   ansible.builtin.command: docker --version
   register: docker_check
+
+- name: Add user to Docker group
+  ansible.builtin.user:
+    user: {{ ansible_facts['user_id'] }}
+    group: docker
+    append: true
 
 - name: Debug
   ansible.builtin.debug:

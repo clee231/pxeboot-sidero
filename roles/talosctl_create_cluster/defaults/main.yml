@@ -1,3 +1,0 @@
----
-# Default variables for talosctl_create_cluster
-kubernetes_version: 1.27.1
