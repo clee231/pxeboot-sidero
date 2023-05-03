@@ -10,5 +10,5 @@
 
 - name: Create control cluster
   ansible.builtin.command:
-    cmd: "talosctl cluster create --kubernetes-version {{ kubernetes_version }} -p 69:69/udp,8081:8081/tcp,51821:51821/udp --workers 0 --endpoint {{ ansible_facts['ansible_default_ipv4']['address']}}"
+    cmd: "talosctl cluster create --kubernetes-version {{ kubernetes_version }} -p 69:69/udp,8081:8081/tcp,51821:51821/udp --workers 0 --endpoint {{ ansible_facts['default_ipv4']['address']}}"
 
