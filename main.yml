@@ -6,3 +6,4 @@
     - kubectl_install
     - clusterctl_install
     - talosctl_create_management_bootstrap_cluster
+    - sidero_talos_provider_install
