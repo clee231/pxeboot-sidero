@@ -3,4 +3,6 @@
   hosts: localhost
   roles:
     - talosctl_install
+    - kubectl_install
+    - clusterctl_install
     - talosctl_create_management_bootstrap_cluster
