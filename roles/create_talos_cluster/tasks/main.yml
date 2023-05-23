@@ -10,6 +10,7 @@
     KUBERNETES_VERSION: "v1.25.10"
     TALOS_VERSION: "v1.4"
     WORKER_SERVERCLASS: "any"
+    GITHUB_TOKEN: "{{ GITHUB_TOKEN }}"
 
 - name: Apply cluster manifest to management cluster
   ansible.builtin.command:
