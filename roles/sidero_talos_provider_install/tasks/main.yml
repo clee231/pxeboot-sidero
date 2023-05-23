@@ -19,6 +19,7 @@
     SIDERO_CONTROLLER_MANAGER_HOST_NETWORK: true
     SIDERO_CONTROLLER_MANAGER_API_ENDPOINT: "{{ ansible_facts['default_ipv4']['address']}}"
   register: clusterctl_output
+  ignore_errors: true
 
 - name: Output install logs
   ansible.builtin.debug:
