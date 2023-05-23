@@ -37,3 +37,4 @@
     image: "ghcr.io/siderolabs/talos:v{{ talos_version }}"
     state: started
     restart: true
+  ignore_errors: true
