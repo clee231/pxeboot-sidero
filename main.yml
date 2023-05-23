@@ -7,3 +7,6 @@
     - clusterctl_install
     - talosctl_create_management_bootstrap_cluster
     - sidero_talos_provider_install
+    - create_talos_cluster
+      vars:
+        cluster_name: "pxe-cluster"

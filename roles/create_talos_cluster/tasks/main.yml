@@ -1,0 +1,9 @@
+---
+- name: Create cluster manifest
+  ansible.builtin.shell:
+    cmd: "clusterctl generate cluster {{ cluster_name }} -i sidero > {{ cluster_name }}-manifest.yaml"
+    creates: "{{ cluster_name }}-manifest.yaml"
+
+- name: Apply cluster manifest to management cluster
+  ansible.builtin.command:
+    cmd: "kubectl apply -f {{ cluster_name }}-manifest.yaml"
