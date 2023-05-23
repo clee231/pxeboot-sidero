@@ -3,6 +3,13 @@
   ansible.builtin.shell:
     cmd: "clusterctl generate cluster {{ cluster_name }} -i sidero > {{ cluster_name }}-manifest.yaml"
     creates: "{{ cluster_name }}-manifest.yaml"
+  environment:
+    CONTROL_PLANE_ENDPOINT: "pxe-cluster.anibase.local"
+    CONTROL_PLANE_PORT: 6443
+    CONTROL_PLANE_SERVERCLASS: "any"
+    KUBERNETES_VERSION: "v1.25.10"
+    TALOS_VERSION: "v1.4"
+    WORKER_SERVERCLASS: "any"
 
 - name: Apply cluster manifest to management cluster
   ansible.builtin.command:
