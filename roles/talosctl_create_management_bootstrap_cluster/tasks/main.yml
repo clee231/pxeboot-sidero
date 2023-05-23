@@ -17,7 +17,7 @@
 
 - name: Create control cluster
   ansible.builtin.command:
-    cmd: "talosctl cluster create --name sidero-controller --kubernetes-version {{ kubernetes_version }} -p 69:69/udp,8081:8081/tcp,51821:51821/udp --workers 0 --config-patch '[{\"op\": \"add\", \"path\": \"/cluster/allowSchedulingOnMasters\", \"value\": true}]' --endpoint {{ ansible_facts['default_ipv4']['address']}}"
+    cmd: "talosctl cluster create --name {{ sidero_controller_name }} --kubernetes-version {{ kubernetes_version }} -p 69:69/udp,8081:8081/tcp,51821:51821/udp --workers 0 --config-patch '[{\"op\": \"add\", \"path\": \"/cluster/allowSchedulingOnMasters\", \"value\": true}]' --endpoint {{ ansible_facts['default_ipv4']['address']}}"
     creates: "{{ ansible_env.HOME }}/.talos/config"
   register: control_cluster_output
 
@@ -30,3 +30,10 @@
   ansible.builtin.command:
     cmd: "talosctl kubeconfig kubeconfig.yml -n {{ ansible_facts['default_ipv4']['address'] }}"
     creates: kubeconfig.yml
+
+- name: Ensure cluster is running
+  community.docker.docker_container:
+    name: "{{ sidero_controller_name }}-controlplane-1"
+    image: "ghcr.io/siderolabs/talos:v{{ talos_version }}"
+    state: started
+    restart: true
