@@ -24,4 +24,3 @@
 - name: Apply cluster manifest to management cluster
   ansible.builtin.command:
     cmd: "kubectl apply -f {{ cluster_name }}-manifest.yaml"
-
