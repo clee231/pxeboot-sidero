@@ -7,9 +7,11 @@
     CONTROL_PLANE_ENDPOINT: "pxe-cluster.anibase.local"
     CONTROL_PLANE_PORT: 6443
     CONTROL_PLANE_SERVERCLASS: "{{ node_type }}"
+    CONTROL_PLANE_MACHINE_COUNT: 1
     KUBERNETES_VERSION: "v1.25.10"
     TALOS_VERSION: "v1.4"
     WORKER_SERVERCLASS: "{{ node_type }}"
+    WORKER_MACHINE_COUNT: 0
     GITHUB_TOKEN: "{{ GITHUB_TOKEN }}"
 
 - name: Generate Serverclass VM types
