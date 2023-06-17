@@ -29,4 +29,13 @@
 
 - name: Retrieve Talosconfig
   ansible.builtin.shell:
-    cmd: "kubectl get secret {{ cluster_name }}-talosconfig -o jsonpath='{.data.talosconfig}' | base64 -d > cluster-0-talosconfig"
+    cmd: "kubectl get secret {{ cluster_name }}-talosconfig -o jsonpath='{.data.talosconfig}' | base64 -d > {{ cluster_name }}-talosconfig"
+
+# Stuff to run manually:
+# - Bootstrap etcd on first etcd node: `talosctl bootstrap -n 10.0.0.10 -e 10.0.0.10 --talosconfig pxe-cluster-talosconfig`
+#   Must be run only once per cluster
+# - Get kubeconfig once control plane is up: `talosctl --talosconfig pxe-cluster-talosconfig --nodes 10.0.0.10 kubeconfig`
+
+
+# TODO: Update machine logging endpoint - https://www.talos.dev/v1.4/talos-guides/configuration/logging/#sending-logs
+# TODO: Update Server resource to pxebootAlways=true.
